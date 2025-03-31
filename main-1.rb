@@ -25,7 +25,7 @@ class ListaAfazeres
     }
   end
 
-  def normalizar_horario(horario_texto)
+  def extrair_horario(horario_texto)
     return "00:00" if !horario_texto
       
     horario_texto = horario_texto.gsub('às', '').strip
@@ -118,7 +118,7 @@ class ListaAfazeres
 
     informacoes = {
       'Dia' => data,
-      'Horário' => normalizar_horario(horario_match ? horario_match[0] : nil),
+      'Horário' => extrair_horario(horario_match ? horario_match[0] : nil),
       'Pessoa' => pessoas ? pessoas.join(', ') : nil,
       'Ação' => acao_match ? acao_match[1] : nil,
       'Tags' => tag_matches.empty? ? nil : tag_matches.join(' '),
